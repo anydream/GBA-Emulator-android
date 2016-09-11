@@ -5,24 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <LinearLayout
-        android:id="@+id/AdContainer"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#000000"
-        android:gravity="right"
-        android:orientation="vertical" >
-        
-        <com.google.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            ads:adSize="BANNER"
-            ads:adUnitId="a15304edba18917" />
-        
-    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/SDLContainer"

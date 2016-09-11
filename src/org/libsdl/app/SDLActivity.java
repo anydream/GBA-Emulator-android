@@ -6,12 +6,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdRequest.ErrorCode;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
+
 import com.van.gba.Cheat;
 
 import android.R;
@@ -78,64 +73,8 @@ public class SDLActivity extends Activity {
         mSingleton = this;
 
         this.setContentView(com.van.gba.R.layout.main);
-        ViewGroup adContainer = (ViewGroup)this.findViewById(com.van.gba.R.id.AdContainer);
         
-        final AdView adView = (AdView)this.findViewById(com.van.gba.R.id.adView);// new AdView(this, AdSize.BANNER, "a15304edba18917");
-        //adContainer.addView(adView);
-		AdRequest oAdRequest = new AdRequest();
-		oAdRequest.addTestDevice("895642C3F89AFDA819C00BF70EC1ECD6");
-		adView.loadAd(oAdRequest);
         
-		final Handler h = new Handler();
-		
-		final Button oCloseAdButton = (Button)this.findViewById(com.van.gba.R.id.buttonCloseAd);
-		if(oCloseAdButton != null)
-		{
-			oCloseAdButton.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View arg0) {
-					adView.setVisibility(View.GONE);
-					oCloseAdButton.setVisibility(View.GONE);
-					
-					Timer t = new Timer();
-					t.schedule(new TimerTask(){
-	
-						@Override
-						public void run() {
-							h.post(new Runnable(){
-								@Override
-								public void run() {
-									adView.setVisibility(View.VISIBLE);
-									oCloseAdButton.setVisibility(View.VISIBLE);		
-								}});
-						}}, 600000);
-				}});
-		}
-		
-		adView.setAdListener(new AdListener(){
-			@Override
-			public void onDismissScreen(Ad arg0) {
-			}
-
-			@Override
-			public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
-			}
-
-			@Override
-			public void onLeaveApplication(Ad arg0) {
-			}
-
-			@Override
-			public void onPresentScreen(Ad arg0) {
-			}
-
-			@Override
-			public void onReceiveAd(Ad arg0) {
-				if(oCloseAdButton != null)
-				{
-					oCloseAdButton.setVisibility(View.VISIBLE);
-				}
-			}});
 		
         // Set up the surface
         mSurface = new SDLSurface(getApplication());
