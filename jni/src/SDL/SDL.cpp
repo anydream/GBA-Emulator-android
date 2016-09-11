@@ -2429,7 +2429,7 @@ void Java_org_libsdl_app_SDLActivity_turnOffAutoLoad(JNIEnv* env, jclass obj)
 void Java_org_libsdl_app_SDLActivity_saveGameState(JNIEnv* env, jclass obj, jstring jstrStateFile)
 {
 	const char* strStateFile = env->GetStringUTFChars(jstrStateFile, NULL);
-	SDL_Log(strStateFile);
+	SDL_Log("%s", strStateFile);
 
 	if(emulator.emuWriteState)
 	{
@@ -2449,7 +2449,7 @@ void Java_org_libsdl_app_SDLActivity_saveGameState(JNIEnv* env, jclass obj, jstr
 void Java_org_libsdl_app_SDLActivity_loadGameState(JNIEnv* env, jclass obj, jstring jstrStateFile)
 {
 	const char* strStateFile = env->GetStringUTFChars(jstrStateFile, NULL);
-	SDL_Log(strStateFile);
+	SDL_Log("%s", strStateFile);
 
 	if(emulator.emuReadState)
 	    emulator.emuReadState(strStateFile);
